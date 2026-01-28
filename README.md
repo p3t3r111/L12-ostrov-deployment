@@ -2,14 +2,19 @@
 
 # Inštalácia do laravel projektu
 
-**Ak nemáš svoj projekt na githube (mal by byť súkromný) tak ho dostan na github až potom pokračuj**
+**⚠️ Ak nemáš svoj projekt na školskom ftp tak ho dostan na ftp a až potom pokračuj**
+
+**⚠️ Ak nemáš svoj projekt na githube (musi byt public) tak ho dostan na github až potom pokračuj**
 
 1. Pridaj do .gitignore -> `public/deploy-secret.php`
 
 2. Ako pridam tieto veci k sebe do projektu?
 - `git clone https://github.com/p3t3r111/L12-ostrov-deployment.git`
 - zmaž si /docs a README.md - sluzia len ako dokumntácia alebo si README.md možeš upraviť pre svoj projekt
+- vlož `deploy.sh` a `.github` a `public` do root priecinku ale neprepisuj to co už tam más (takže budeš asi s najvacsou pravdepodobnostou to musiet spravit ručne a to že `.github/workflows/build.yml` hodis do svojho `laravel .github/workflows` a `public/deploy-secret` a `public/deploy` do `laravel public/`)
 3. zapni si lokalne projekt a chod na `localhost:8000/deploy-secret.php` a pokračuj na sekciu tu v dokumntacii : **Vytvorenie Webhooku** (Úplne dole)
+
+4. sprav další commit a malo by to byť funkčne na školskom serveri
 
 
 
