@@ -15,11 +15,12 @@ if (!$SECRET || !hash_equals($expected, $signature)) {
     http_response_code(403);
     exit('Invalid signature');
 }
-$APP_DIR = realpath(__DIR__ . '/../');
+$APP_DIR = realpath('../');
 // ===== DEPLOY PRÍKAZY =====
 $commands = [
     "echo 'Deploying to $APP_DIR'",
-    'git pull',
+    'git fetch origin',
+    'git reset --hard origin/master',
     'composer install --no-dev --optimize-autoloader',
     'php artisan optimize:clear',
 ];
