@@ -24,6 +24,7 @@ Chod do sekcie **Webhook** a potom klikni na **Add Webhook**
 
 ## 3. krok
 Samotné vytváranie webhooku:
+
 4. a 5. bod - vyplni podla seba - root = hlavny priečinok, čiže ak sa tvoj projekt vola laravel tak root priecinok je laravel, nie laravel/public alebo laravel/app
 
 6. bod - prepni na `application/json`
