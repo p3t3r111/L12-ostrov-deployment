@@ -1,0 +1,53 @@
+name: Build frontend
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - resources/**
+      - package.json
+      - package-lock.json
+      - vite.config.js
+      - app/View/Components/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build frontend
+        run: npm run build
+    
+      - name: Fix Vite manifest location
+        run: |
+          if [ -f public/build/.vite/manifest.json ]; then
+            mv public/build/.vite/manifest.json public/build/manifest.json
+            rm -rf public/build/.vite
+          fi
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: public/build
+    
+      - name: Commit build
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add public/build
+          git commit -m "chore(build): frontend [skip ci]"
+          git push
+
