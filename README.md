@@ -25,18 +25,20 @@ Chod do sekcie **Webhook** a potom klikni na **Add Webhook**
 ## 3. krok
 Samotné vytváranie webhooku:
 
-4. a 5. bod - vyplni podla seba - root = hlavny priečinok, čiže ak sa tvoj projekt vola laravel tak root priecinok je laravel, nie laravel/public alebo laravel/app
+4.a5. bod - vyplni podla seba - root = hlavny priečinok, čiže ak sa tvoj projekt vola laravel tak root priecinok je laravel, nie laravel/public alebo laravel/app
 
-6. bod - prepni na `application/json`
+`https://{priezvisko}.ostrovskeho.eu/{cesta k laravel projektu (root)}/deploy.php`
 
-7. bod - spusti lokálne u seba na pc `localhost:8000/deploy-secret.php`, skopíruj to čo ti to vyhodí (ak to je error tak ho najprv vyrieš a potom pokračuj dalej) a vlož to do toho pola, bacha na medzeri pred alebo za klucom (nesmu tam byt)
+6.bod - prepni na `application/json`
 
-8. bod - nechaj tak ako je
+7.bod - spusti lokálne u seba na pc `localhost:8000/deploy-secret.php`, skopíruj to čo ti to vyhodí (ak to je error tak ho najprv vyrieš a potom pokračuj dalej) a vlož to do toho pola, bacha na medzeri pred alebo za klucom (nesmu tam byt)
 
-9. bod - nechaj tak ako je
+8.bod - nechaj tak ako je
 
-10. bod - nechaj zaškrtnuté active
+9.bod - nechaj tak ako je
 
-11. bod - skontroluj, že máš všetko dobre zadané, ak áno potvrď vytvorenie webhooku
+10.bod - nechaj zaškrtnuté active
+
+11.bod - skontroluj, že máš všetko dobre zadané, ak áno potvrď vytvorenie webhooku
 
 ![Krok č.3](docs/image3.png)
