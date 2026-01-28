@@ -15,28 +15,38 @@ if (!$SECRET || !hash_equals($expected, $signature)) {
     http_response_code(403);
     exit('Invalid signature');
 }
-
+$APP_DIR = realpath(__DIR__ . '/../');
 // ===== DEPLOY PRÍKAZY =====
 $commands = [
     "echo 'Deploying to $APP_DIR'",
-    "bash " . escapeshellarg(__DIR__ . "/deploy.sh")
-
-    
+    'git pull',
+    'composer install --no-dev --optimize-autoloader',
+    'php artisan optimize:clear',
 ];
 
 $output = [];
 
 foreach ($commands as $command) {
-    exec($command . " 2>&1", $out);
+    $out = [];
+    $code = 0;
+
+    exec(
+        'cd ' . escapeshellarg($APP_DIR) . ' && ' . $command . ' 2>&1',
+        $out,
+        $code
+    );
+
+    $output[] = ">> $command";
+    $output   = array_merge($output, $out);
+
     if ($code !== 0) {
         http_response_code(500);
-        echo "Deploy failed on: $command\n";
+        echo "Deploy failed on: $command\n\n";
         echo implode("\n", $out);
         exit;
     }
-    $output[] = ">> $command";
-    $output   = array_merge($output, $out);
 }
 
-// ===== VÝSTUP =====
+$output[] = "Deploy hotový";
+
 echo implode("\n", $output);
